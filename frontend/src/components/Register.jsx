@@ -27,9 +27,9 @@ const RegistrationForm = () => {
   })
   const formik=useFormik({
     initialValues: {
-    email: "pp@gmail.com",
-    password: "123456",
-    username: "pp"
+    email: "",
+    password: "",
+    username: ""
     },
     // Validations
     validationSchema,
