@@ -10,7 +10,7 @@ const app=express();
 mongoose.connect("mongodb+srv://pradeesh0702:Pradeesh0207@cluster0.th4v6n1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(()=>{console.log("DB connect");}).catch((e)=>{console.log(e);})
 //!cors config
 const corsOptions={
-    origin: ["http://localhost:5173"]
+    origin: ["https://expense-tracker-1-5wom.onrender.com"]
 }
 app.use(cors(corsOptions))
 //!middleware
