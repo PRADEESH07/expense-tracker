@@ -1,9 +1,10 @@
 import React from 'react'
 import userToken from '../../utils/getToken'
-import AlertMessage from '../AlertMessage'
+import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 const AuthRoute = ({children}) => {
-    if(userToken)
+      const user=useSelector((state)=>state?.auth?.user)
+    if(user)
     {
         return children
     }
