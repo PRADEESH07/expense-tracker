@@ -6,12 +6,15 @@ import { changePasswordApi } from "../services/users/userService";
 import { useMutation } from "@tanstack/react-query";
 import { logoutAction } from "../redux/slice/authSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import AlertMessage from "./AlertMessage";
 const validationSchema = Yup.object({
   password: Yup.string()
     .min(2, "Password must be at least 2 characters long")
     .required("Email is required"),
 });
 const UpdatePassword = () => {
+    const navigate=useNavigate();
     const dispatch=useDispatch();
     const {mutateAsync,isError,error,isSuccess,isPending}=useMutation({
         mutationFn: changePasswordApi,
@@ -28,6 +31,7 @@ const UpdatePassword = () => {
         mutateAsync(values.password).then((data)=>{
             dispatch(logoutAction());
             localStorage.removeItem('userInfo')
+          navigate('/login')
         }).catch((err)=>{console.log(err);})
     },
   });
