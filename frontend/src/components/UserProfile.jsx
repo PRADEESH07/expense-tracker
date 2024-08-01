@@ -7,7 +7,7 @@ import {  updateProfileApi } from "../services/users/userService";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../redux/slice/authSlice";
 import { useNavigate } from "react-router-dom";
-
+import AlertMessage from "./AlertMessage";
 
 const UserProfile = () => {
     const navigate=useNavigate();
