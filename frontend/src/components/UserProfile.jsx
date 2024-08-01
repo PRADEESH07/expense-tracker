@@ -6,8 +6,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import {  updateProfileApi } from "../services/users/userService";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../redux/slice/authSlice";
+import { useNavigate } from "react-router-dom";
+
 
 const UserProfile = () => {
+    const navigate=useNavigate();
   const dispatch=useDispatch();
   const {mutateAsync,isError,error,isSuccess,isPending}=useMutation({
     mutationFn: updateProfileApi,
@@ -23,7 +26,8 @@ const UserProfile = () => {
     onSubmit: (values) => {
       mutateAsync(values).then((data)=>{
         dispatch(logoutAction());
-        localStorage.removeItem('userInfo') 
+        localStorage.removeItem('userInfo')
+        navigate('/login')
       }).catch((err)=>{console.log(err);})
     },
   });
